@@ -1,0 +1,6 @@
+chute = int
+puts segredo == chute
+chute = true
+false
+
+

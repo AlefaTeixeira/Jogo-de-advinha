@@ -1,61 +1,75 @@
-    puts "Bem-vindo ao jogo da adivinhacao"
-    puts "Qual e o seu nome?"
+def boas_vindas
+    puts
+    puts "Bem-vindo ao jogo de adivinhação"
+    puts
+    puts "Qual é o seu nome?"
     nome = gets
-    puts "\n\n\n\n"
-    puts "Comecaremos o jogo para voce, " + nome
-    puts "Escolhendo um numero secreto entre 0 e 200..."
+    puts
+    puts "O jogo começará em instantes " + nome
+    puts "Terá que tentar de novo"
+
+end
+
+def sorteio_numero
+    puts
+    puts"Estamos escolhendo um número secreto entre 0 e 200..."
     numero_secreto = 121
-    puts "Escolhido... que tal adivinhar hoje o nosso numero secreto?"
-    puts "\n\n\n"
-    puts "Tentativa 1"
-    puts "Entre com o numero"
+    puts"Pronto! Agora você deve tentar adivinhar qual é o número secreto."
+    numero_secreto    
+end
+
+def pede_numero (tentativas, limite_de_tentativas)
+    puts "\n"
+    puts "Tentativa " + tentativas.to_s + " de " +limite_de_tentativas.to_s
+    puts "Entre com o número"
     chute = gets
-    puts "Sera que acertou? Voce chutou " + chute
+    puts "Será que você acertou? " + chute
+end
+
+def verifica_se_acertou(numero_secreto, chute)
     acertou = numero_secreto == chute.to_i
 
-if acertou
-    puts "Acertou!"
-    maior = numero_secreto > chute.to_i
+    if acertou
+        puts "Acertou!"
+        return true
+    else 
+        maior = numero_secreto > chute.to_i
+        if maior
+            puts "O número secreto é maior!"
+            return false
+        else
+            puts "O número secreto é menor!"
+            return false
 
-if maior
-    puts "O numero secreto e maior!"
-else
-    puts "O numero secreto e menor!"
+        end    
+    end
+
 end
+
+
+boas_vindas
+numero_secreto = sorteio_numero
+
+limite_de_tentativas = 3
+
+for tentativas in 1..limite_de_tentativas
+    chute = pede_numero(tentativas, limite_de_tentativas)
+    if verifica_se_acertou(numero_secreto, chute)
+        break
+    end
+
+def nao_quer_jogar?
+	puts "Deseja jogar novamente? (S/N)"
+	quero_jogar = gets.strip
+	nao_quero_jogar = quero_jogar.upcase == "N"
 end
-    puts "\n\n\n"
-    puts "Tentativa 2"
-    puts "Entre com o numero"
-    chute = gets
-    puts "Sera que acertou? Voce chutou " + chute
-    acertou = numero_secreto == chute.to_i
-if acertou
-    puts "Acertou!"
-else
-    maior = numero_secreto > chute.to_i
 
-if maior
-    puts "O numero secreto e maior!"
-else
-    puts "O numero secreto e menor!"
-end
-end
-    puts "\n\n\n"
-    puts "Tentativa 3"
-    puts "Entre com o numero"
-    chute = gets
-    puts "Sera que acertou? Voce chutou " + chute
-    acertou = numero_secreto == chute.to_i
+nome = boas_vindas
+numero = sorteio_numero
 
-if acertou
-    puts "Acertou!" 
-else
-    maior = numero_secreto > chute.to_i
-
-if maior
-
-    puts "O numero secreto e maior!"
-else  
-    puts "O numero secreto e menor!"
+loop do
+if
+	joga nome, numero
+	break nao_quer_jogar?
 end
 end
